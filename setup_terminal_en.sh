@@ -247,24 +247,6 @@ config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = true
 
--- 4. Key Features: Smart Splits & Navigation (Tmux-like)
-config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
-config.keys = {
-  -- Vertical Split (Leader + -)
-  { key = '-', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
-  -- Horizontal Split (Leader + \)
-  { key = '\\\\', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  -- Pane Navigation (Leader + hjkl)
-  { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left' },
-  { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
-  { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
-  { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
-  -- Close Pane (Leader + x)
-  { key = 'x', mods = 'LEADER', action = act.CloseCurrentPane { confirm = true } },
-  -- Maximize Pane (Leader + z)
-  { key = 'z', mods = 'LEADER', action = act.TogglePaneZoomState },
-}
-
 -- Shell: Auto Detection
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_domain = 'WSL:Ubuntu'
@@ -272,7 +254,7 @@ else
   config.default_prog = { '/bin/zsh', '-l' }
 end
 
--- 5. Ensure full icon support
+-- 4. Ensure full icon support
 config.enable_kitty_keyboard = true
 config.warn_about_missing_glyphs = false
 
