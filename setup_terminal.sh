@@ -247,24 +247,6 @@ config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = true
 
--- 4. 关键特性: 智能分屏与导航 (类 Tmux)
-config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
-config.keys = {
-  -- 垂直分屏 (Leader + -)
-  { key = '-', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
-  -- 水平分屏 (Leader + \)
-  { key = '\\\\', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  -- 面板导航 (Leader + hjkl)
-  { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left' },
-  { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
-  { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
-  { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
-  -- 关闭面板 (Leader + x)
-  { key = 'x', mods = 'LEADER', action = act.CloseCurrentPane { confirm = true } },
-  -- 面板最大化 (Leader + z)
-  { key = 'z', mods = 'LEADER', action = act.TogglePaneZoomState },
-}
-
 -- Shell: 自动识别
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_domain = 'WSL:Ubuntu'
@@ -272,7 +254,7 @@ else
   config.default_prog = { '/bin/zsh', '-l' }
 end
 
--- 5. 确保启用完整图标支持
+-- 4. 确保启用完整图标支持
 config.enable_kitty_keyboard = true
 config.warn_about_missing_glyphs = false
 
